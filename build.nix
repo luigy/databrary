@@ -3,6 +3,7 @@
 let 
 	nixpkgs = reflex-platform.nixpkgs;
   dontCheck = nixpkgs.haskell.lib.dontCheck;
+  doJailbreak = nixpkgs.haskell.lib.doJailbreak;
 
   # ghc 8 fails with template haskell errors
   #pkgs = reflex-platform.ghc.override {
@@ -17,6 +18,7 @@ let
       # databrary is using 0.4.5
     	postgresql-typed = dontCheck (self.callHackage  "postgresql-typed"
       "0.4.5" {});
+      hjsonschema = doJailbreak (self.callHackage  "hjsonschema" 0.9.0.0" {});
 			
 			#partial-isomorphisms is for GHC7 only!
 			partial-isomorphisms= dontCheck (self.callHackage  "partial-isomorphisms"
